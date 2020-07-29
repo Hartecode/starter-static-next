@@ -2,6 +2,7 @@ import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import Layout from '../components/layout/layout';
 import '../themes/global.scss';
 import { AnimatePresence } from 'framer-motion';
+import { withTina } from 'tinacms';
 
 function MyApp({ Component, pageProps }) {
   // during build process these properties are null and can cause errors
@@ -18,4 +19,7 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default withTina(MyApp, {
+  enabled: false,
+  sidebar: true,
+});
