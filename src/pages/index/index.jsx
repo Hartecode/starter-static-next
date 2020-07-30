@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import { pageVariants } from '../../lib/motionVariants';
 import { useCMS } from 'tinacms';
 import { useForm, usePlugin } from 'tinacms';
+import ReactMarkdown from 'react-markdown';
 
-const Home = ({ content }) => {
+const Home = ({ markdownFile }) => {
   const cms = useCMS();
   const formConfig = {
     id: 'home-page01', // a unique identifier for this instance of the form
     label: 'Home Page', // name of the form to appear in the sidebar
-    initialValues: { content }, // populate the form with starting values
+    initialValues: { content: markdownFile }, // populate the form with starting values
     onSubmit: (values) => {
       // do something with the data when the form is submitted
       alert(`Submitting ${JSON.stringify(values)}`);
@@ -38,7 +39,7 @@ const Home = ({ content }) => {
       <button onClick={() => cms.toggle()} style={{ border: '1px solid #000' }}>
         {cms.enabled ? `Exit Tina` : `Edit with Tina`}
       </button>
-      <div dangerouslySetInnerHTML={{ __html: data.content }} />
+      <ReactMarkdown>{data.content}</ReactMarkdown>
     </motion.div>
   );
 };

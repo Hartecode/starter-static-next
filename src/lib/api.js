@@ -1,7 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
-import markdownToHtml from './markdownToHTML';
 
 const pagesDirectory = join(process.cwd(), 'src/data/pages');
 
@@ -37,12 +36,12 @@ export function getPageData(page) {
  */
 export async function getPageProps(page) {
   const { data, content } = getPageData(page);
-  const transformContent = await markdownToHtml(content);
+  // const transformContent = await markdownToHtml(content);
   return {
     props: {
       navLinks: getPageLists(),
       data,
-      content: transformContent,
+      markdownFile: content,
     },
   };
 }

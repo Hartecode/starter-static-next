@@ -11,6 +11,7 @@ const Layout = ({ data, navLinks, children }) => {
         <title>{title}</title>
         <meta name="Description" content={description}></meta>
         <meta name="keywords" content="next,sean,panda"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header navLinks={navLinks} />

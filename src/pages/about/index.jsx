@@ -1,15 +1,16 @@
 import { getPageProps } from '../../lib/api';
 import { motion } from 'framer-motion';
 import { pageVariants } from '../../lib/motionVariants';
+import ReactMarkdown from 'react-markdown';
 
-const About = ({ content }) => (
+const About = ({ markdownFile }) => (
   <motion.div
     initial="initial"
     animate="enter"
     exit="exit"
     variants={pageVariants}
   >
-    <div dangerouslySetInnerHTML={{ __html: content }} />
+    <ReactMarkdown>{markdownFile}</ReactMarkdown>
   </motion.div>
 );
 
